@@ -1,0 +1,97 @@
+@import './variables.scss';
+
+.v-application {
+    .hover-underline {
+        text-decoration: none;
+        :hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.v-list--information {
+    padding-bottom: 0;
+    .v-list-item__content {
+        > .v-list-item__action {
+            margin-right: 24px;
+            font-size: .6875rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #5f6368;
+        }
+    }
+    @media #{map-get($display-breakpoints, 'lg-and-up')} {
+        .v-list-item__content {
+            flex-wrap: wrap;
+            align-items: stretch;
+            > .v-list-item__action {
+                flex: none;
+                flex-basis: 156px;
+            }
+            > .v-list-item__title {
+                flex: none;
+            }
+        }
+    }
+
+    > .v-divider:not(.v-divider--vertical) {
+        margin-left: 16px;
+    }
+
+    .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+        color: #202124!important;
+    }
+}
+
+.v-data-table th {
+    font-weight: 500;
+}
+.theme--light.v-data-table .v-data-table-header th.sortable.active, 
+.theme--light.v-data-table .v-data-table-header th.sortable.active .v-data-table-header__icon {
+    color: $primary;
+}
+.theme--light.v-data-table td  {
+    color: #595d6e;
+}
+.theme--light.v-data-table thead tr th {
+    color: #595d6e;
+}
+.theme--light.v-data-table thead tr:last-child th,
+.theme--light.v-data-table tbody tr:not(:last-child) td:not(.v-data-table__mobile-row), 
+.theme--light.v-data-table tbody tr:not(:last-child) th:not(.v-data-table__mobile-row) {
+    border-bottom: 1px solid #f0f3ff;
+}
+.theme--light.v-data-table .v-data-footer {
+    border-top: 1px solid #f0f3ff;
+}
+.v-data-table__checkbox .v-icon {
+    font-size: 20px;
+}
+
+.v-input--selection-controls {
+    margin-top: 0;
+}
+
+.v-text-field {
+    margin-bottom: 12px;
+}
+.v-text-field__details {
+    min-height: 0;
+    > .v-messages {
+        min-height: 0;
+    }
+}
+
+.v-toolbar {
+    box-shadow: 0 0 10px silver;
+}
+
+.v-dialog__content {
+    align-items: flex-start;
+}
+
+.v-input--checkbox {
+    .theme--light.v-label {
+        color: rgba(0, 0, 0, 0.87);
+    }
+}

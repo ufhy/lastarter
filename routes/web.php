@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Auth::routes();
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('{path}', function (Request $request) {
+    $isLogin = Auth::check();
+    $user = $request->user();
+    $permissions = [];
+    
+    if (Auth::check()) {
+        foreach ($user->getAllPermissions() as $permission) {
+            $permissions[] = $permission->name;
+        }
+    }
+
+    return view('app', [
+        'userInfo' => $isLogin ? [
+                'id' => $user->id,
+                'username' => $user->username,
+                'email' => $user->email,
+                'last_login' => $user->last_login,
+                'created_at' => $user->created_at,
+                'updated_at' => $user->updated_at,
+            ] : [],
+        'permissions' => $permissions
+    ]);
+})->where('path', '^(?!api).*$');

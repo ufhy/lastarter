@@ -1,0 +1,13 @@
+{
+    "name": "MySelf",
+    "alias": "myself",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\MySelf\\Providers\\MySelfServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

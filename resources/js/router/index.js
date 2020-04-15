@@ -8,7 +8,7 @@ import store from '../store'
 Vue.use(VueMeta)
 Vue.use(VueRouter)
 
-const globalMiddleware = []
+const globalMiddleware = ['i18n']
 const routeMiddleware = resolveMiddleware(
     require.context('../middleware', false, /.*\.js$/)
 )

@@ -61,7 +61,7 @@ class ApiPermissionController extends Controller
 
         $permission = PermissionModel::create([
             'name' => $request->input('name'),
-            'guard_name' => $request->input('guard_name'),
+            'guard_name' => 'web',
         ]);
 
         return response()->json([
@@ -100,7 +100,7 @@ class ApiPermissionController extends Controller
         }
 
         $permission->name = $request->input('name');
-        $permission->guard_name = $request->input('guard_name');
+        $permission->guard_name = 'web';
         $permission->save();
 
         return response()->json([

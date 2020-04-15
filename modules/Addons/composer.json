@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/myself",
+    "name": "nwidart/addons",
     "description": "",
     "authors": [
         {
@@ -10,7 +10,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\MySelf\\Providers\\MySelfServiceProvider"
+                "Modules\\Addons\\Providers\\AddonsServiceProvider"
             ],
             "aliases": {
 
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\MySelf\\": ""
+            "Modules\\Addons\\": ""
         }
     }
 }

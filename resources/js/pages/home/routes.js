@@ -4,7 +4,7 @@ export default {
     path: '/home',
     name: 'home',
     meta: {
-        middleware: 'auth',
+        middleware: ['auth'],
     },
     component: Home,
 }

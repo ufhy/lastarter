@@ -68,7 +68,7 @@ class ApiRoleController extends Controller
             {
                 $role = RoleModel::create([
                     'name' => $request->input('name'),
-                    'guard_name' => $request->input('guard_name')
+                    'guard_name' => 'web'
                 ]);
                 $role->syncPermissions($request->input('permissions'));
 
@@ -120,7 +120,7 @@ class ApiRoleController extends Controller
         }
 
         $role->name = $request->input('name');
-        $role->guard_name = $request->input('guard_name');
+        $role->guard_name = 'web';
         $role->syncPermissions($request->input('permissions'));
 
         $role->save();

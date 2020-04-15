@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\MySelf\Database\Seeders;
+namespace Modules\Addons\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class MySelfDatabaseSeeder extends Seeder
+class AddonsDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

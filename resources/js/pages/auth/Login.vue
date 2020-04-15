@@ -76,19 +76,13 @@ export default {
             passwordVisibility: false
         }
     },
-    // created() {
-    //     console.log('Login created');
-    // },
     methods: {
         login() {
             this.$http.get('/sanctum/csrf-cookie').then(response => {
                 this.form.post('/api/auth/login').then((response) => {
                     const { data } = response
                     this.$coresnackbars.success(data.message)
-                    this.$store.commit('auth/setUser', data.user)
-
-                    // Redirect home
-                    this.$router.push({ name: 'home' })
+                    window.location.reload()
                 })
             });
         }

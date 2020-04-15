@@ -38,7 +38,9 @@
                     color="primary"
                     @click="saveClose">
                     <v-icon left>save_alt</v-icon>
-                    <span class="text-none">Save & Close</span>
+                    <span class="text-none">
+                        {{ $t('words.btn_save_close') }}
+                    </span>
                 </v-btn>
                 <v-btn
                     depressed
@@ -46,14 +48,18 @@
                     color="primary"
                     @click="save">
                     <v-icon left>save</v-icon>
-                    <span class="text-none">Save</span>
+                    <span class="text-none">
+                        {{ $t('words.btn_save') }}
+                    </span>
                 </v-btn>
                 <template v-if="closeRouter">
                     <v-btn 
                         depressed exact
                         :to="closeRouter">
                         <v-icon left>close</v-icon>
-                        <span class="text-none">Cancel</span>
+                        <span class="text-none">
+                            {{ $t('words.btn_cancel') }}
+                        </span>
                     </v-btn>
                 </template>
                 <template v-else>
@@ -61,7 +67,9 @@
                         depressed
                         @click="close">
                         <v-icon>close</v-icon>
-                        <span class="text-none">Cancel</span>
+                        <span class="text-none">
+                            {{ $t('words.btn_cancel') }}
+                        </span>
                     </v-btn>
                 </template>
             </v-card-actions>

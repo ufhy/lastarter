@@ -10,9 +10,6 @@ export default {
     path: '/user',
     redirect: '/user/users',
     name: 'user',
-    meta: {
-        middleware: 'permissions',
-    },
     component: {
         name: 'Users',
         template: '<router-view></router-view>'
@@ -22,6 +19,7 @@ export default {
             path: 'users',
             name: 'user.users.index',
             meta: {
+                module: 'user::users',
                 middleware: 'permissions',
                 permission: 'user.users.read'
             },
@@ -31,6 +29,7 @@ export default {
                     path: 'create',
                     name: 'user.users.create',
                     meta: {
+                        module: 'user::users',
                         middleware: 'permissions',
                         permission: 'user.users.create'
                     },
@@ -40,6 +39,7 @@ export default {
                     path: 'edit/:id',
                     name: 'user.users.edit',
                     meta: {
+                        module: 'user::users',
                         middleware: 'permissions',
                         permission: 'user.users.edit'
                     },
@@ -49,6 +49,7 @@ export default {
                     path: 'view/:id',
                     name: 'user.users.view',
                     meta: {
+                        module: 'user::users',
                         middleware: 'permissions',
                         permission: 'user.users.read'
                     },
@@ -60,6 +61,7 @@ export default {
             path: 'roles',
             name: 'user.roles.index',
             meta: {
+                module: 'user::roles',
                 middleware: 'permissions',
                 permission: 'user.roles.read'
             },
@@ -69,6 +71,7 @@ export default {
                     path: 'create',
                     name: 'user.roles.create',
                     meta: {
+                        module: 'user::roles',
                         middleware: 'permissions',
                         permission: 'user.roles.create'
                     },
@@ -78,6 +81,7 @@ export default {
                     path: 'edit/:id',
                     name: 'user.roles.edit',
                     meta: {
+                        module: 'user::roles',
                         middleware: 'permissions',
                         permission: 'user.roles.edit'
                     },
@@ -89,6 +93,7 @@ export default {
             path: 'permissions',
             name: 'user.permissions.index',
             meta: {
+                module: 'user::permissions',
                 middleware: 'permissions',
                 permission: 'user.permissions.read'
             },
@@ -98,6 +103,7 @@ export default {
                     path: 'create',
                     name: 'user.permissions.create',
                     meta: {
+                        module: 'user::permissions',
                         middleware: 'permissions',
                         permission: 'user.permissions.create'
                     },
@@ -107,6 +113,7 @@ export default {
                     path: 'edit/:id',
                     name: 'user.permissions.edit',
                     meta: {
+                        module: 'user::permissions',
                         middleware: 'permissions',
                         permission: 'user.permissions.edit'
                     },

@@ -8,15 +8,9 @@
         @save-close="saveAction('saveClose')"
         @save="saveAction">
         <v-text-field
-            label="Name"
+            :label="$t('words.lb_name')"
             v-model="form.name"
             :error-messages="form.errors.getAll('name')"
-        />
-        <v-text-field 
-            class="mb-5"
-            label="Guard name"
-            v-model="form.guard_name"
-            :error-messages="form.errors.getAll('guard_name')"
         />
         <v-select 
             multiple small-chips deletable-chips clearable all
@@ -35,7 +29,9 @@
                         </v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                        <v-list-item-title>Select All</v-list-item-title>
+                        <v-list-item-title>
+                            {{ $t('words.lb_select_all') }}
+                        </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
                 <v-divider></v-divider>
@@ -66,8 +62,8 @@ export default {
         },
         title() {
             return this.mode === 'new' 
-                ? 'Create role'
-                : 'Edit role'
+                ? this.$t('user.roles.heading_create')
+                : this.$t('user.roles.heading_edit')
         },
         isAllPermission() {
             return this.form.permissions.length === this.permissionOptions.length
@@ -106,7 +102,7 @@ export default {
                 const { data } = response
                 this.permissionOptions = data.permissions
             }).catch(err => {
-                this.$coresnackbars.error('Error when initial data')
+                this.$coresnackbars.error(this.$t('messages.error_init_date'))
             })
         },
         fetchRow() {
@@ -121,6 +117,8 @@ export default {
                         that.form.permissions.push(permission.id)
                     });
                 }
+            }).catch(err => {
+                this.$coresnackbars.error(this.$t('messages.error_init_date'))
             })
         },
         async saveAction(payload) {

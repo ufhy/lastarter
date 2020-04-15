@@ -2,7 +2,7 @@
     <v-container class="mt-5 pt-5">
         <v-card outlined>
             <v-card-title>
-                Permission list
+                {{ $t('user.permissions.heading_list') }}
                 <v-divider vertical class="mx-3" />
                 <v-btn
                     depressed small rounded
@@ -10,7 +10,9 @@
                     color="blue lighten-5"
                     :to="{name: 'user.permissions.create'}">
                     <v-icon left color="blue darken-1">add_circle_outline</v-icon>
-                    <span class="blue--text text--darken-1">Add</span>
+                    <span class="blue--text text--darken-1">
+                        {{ $t('words.btn_add') }}
+                    </span>
                 </v-btn>
                 <v-btn icon small
                     color="blue darken-1"
@@ -26,7 +28,7 @@
                 <v-spacer />
                 <v-text-field 
                     outlined dense hide-details
-                    placeholder="Search"
+                    :placeholder="$t('words.lb_search')"
                     v-model="searchText"
                 />
             </v-card-title>
@@ -60,7 +62,9 @@
                                     <v-icon style="opacity:.8">edit</v-icon>
                                 </v-list-item-icon>
                                 <v-list-item-content>
-                                    <v-list-item-title class="font-weight-regular">Edit</v-list-item-title>
+                                    <v-list-item-title class="font-weight-regular">
+                                        {{ $t('words.btn_edit') }}
+                                    </v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
                             <v-list-item @click="removeAction(item)">
@@ -68,7 +72,9 @@
                                     <v-icon style="opacity:.8">delete_outline</v-icon>
                                 </v-list-item-icon>
                                 <v-list-item-content>
-                                    <v-list-item-title class="font-weight-regular">Remove</v-list-item-title>
+                                    <v-list-item-title class="font-weight-regular">
+                                        {{ $t('words.btn_remove') }}
+                                    </v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
                         </v-list>
@@ -93,8 +99,7 @@ export default {
             loading: false,
             dtHeaders: [
                 {value: 'id', text: '#', width: 40, sortable: false, align: 'center'},
-                {value: 'name', text: 'Name'},
-                {value: 'guard_name', text: 'Guard name'},
+                {value: 'name', text: this.$t('words.lb_name')},
                 {value: 'updated_at', text: 'Updated At', width: 160},
             ],
             dtOptions: {},

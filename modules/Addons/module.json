@@ -1,11 +1,11 @@
 {
-    "name": "MySelf",
-    "alias": "myself",
+    "name": "Addons",
+    "alias": "addons",
     "description": "",
     "keywords": [],
     "order": 0,
     "providers": [
-        "Modules\\MySelf\\Providers\\MySelfServiceProvider"
+        "Modules\\Addons\\Providers\\AddonsServiceProvider"
     ],
     "aliases": {},
     "files": [],

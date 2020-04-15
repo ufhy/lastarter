@@ -2,7 +2,7 @@
     <v-container class="mt-5 pt-5">
         <v-card outlined>
             <v-card-title>
-                User list
+                {{ $t('user.users.heading_list') }}
                 <v-divider vertical class="mx-3" />
                 <v-btn
                     depressed small rounded
@@ -10,7 +10,9 @@
                     color="blue lighten-5"
                     :to="{name: 'user.users.create'}">
                     <v-icon left color="blue darken-1">add_circle_outline</v-icon>
-                    <span class="blue--text text--darken-1">Add</span>
+                    <span class="blue--text text--darken-1">
+                        {{ $t('words.btn_add') }}
+                    </span>
                 </v-btn>
                 <v-btn icon small
                     color="blue darken-1"
@@ -26,7 +28,7 @@
                 <v-spacer />
                 <v-text-field 
                     outlined dense hide-details
-                    placeholder="Search"
+                    :placeholder="$t('words.lb_search')"
                     prepend-inner-icon="search"
                     v-model="searchText"
                 />
@@ -51,7 +53,9 @@
                             </v-btn>
                         </template>
                         <v-list dense subheader>
-                            <v-subheader>Actions</v-subheader>
+                            <v-subheader>
+                                {{ $t('words.lb_actions') }}
+                            </v-subheader>
                             <v-list-item
                                 :to="{
                                     name: 'user.users.edit', 
@@ -61,7 +65,9 @@
                                     <v-icon style="opacity:.8">edit</v-icon>
                                 </v-list-item-icon>
                                 <v-list-item-content>
-                                    <v-list-item-title class="font-weight-regular">Edit</v-list-item-title>
+                                    <v-list-item-title class="font-weight-regular">
+                                        {{ $t('words.btn_edit') }}
+                                    </v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
                             <v-list-item @click="removeAction(item)">
@@ -69,7 +75,9 @@
                                     <v-icon style="opacity:.8">delete_outline</v-icon>
                                 </v-list-item-icon>
                                 <v-list-item-content>
-                                    <v-list-item-title class="font-weight-regular">Remove</v-list-item-title>
+                                    <v-list-item-title class="font-weight-regular">
+                                        {{ $t('words.btn_remove') }}
+                                    </v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
                         </v-list>
@@ -115,11 +123,11 @@ export default {
             loading: false,
             dtHeaders: [
                 {value: 'id', text: '#', width: 40, sortable: false, align: 'center'},
-                {value: 'username', text: 'Username'},
-                {value: 'email', text: 'Email'},
-                {value: 'active', text: 'Active'},
-                {value: 'last_login', text: 'Last login'},
-                {value: 'updated_at', text: 'Updated At'},
+                {value: 'username', text: this.$t('words.lb_username')},
+                {value: 'email', text: this.$t('words.lb_email')},
+                {value: 'active', text: this.$t('words.lb_active')},
+                {value: 'last_login', text: this.$t('words.lb_last_login')},
+                {value: 'updated_at', text: this.$t('words.lb_updated_at')},
             ],
             dtOptions: {},
             dtItems: [],

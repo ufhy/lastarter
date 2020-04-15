@@ -13,12 +13,5 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'title_login' => 'Login',
-    'title_forgotten_password' => 'Forgotten Password',
-    'login' => 'Login',
-    'forgotten_password_title' => 'Forgotten Password',
-    'remember_me' => 'Remember me',
-    'forgotten_password' => 'Forgotten Password'
+    'error_init_date' => 'Error when initial data',
 ];

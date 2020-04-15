@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\MySelf\Providers;
+namespace Modules\Addons\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class MySelfServiceProvider extends ServiceProvider
+class AddonsServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'MySelf';
+    protected $moduleName = 'Addons';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'myself';
+    protected $moduleNameLower = 'addons';
 
     /**
      * Boot the application events.

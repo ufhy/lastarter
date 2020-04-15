@@ -9,18 +9,18 @@
         @save="saveAction">
         <v-checkbox 
             color="primary"
-            label="Active"
+            :label="$t('words.lb_active')"
             v-model="form.active"
         />
         <v-text-field
-            label="Username"
+            :label="$t('words.lb_username')"
             prepend-icon="account_circle"
             v-model="form.username"
             :error-messages="form.errors.getAll('username')"
         />
         <v-select 
             multiple small-chips deletable-chips clearable 
-            label="Roles"
+            :label="$t('words.lb_roles')"
             prepend-icon="supervised_user_circle"
             item-text="name"
             item-value="id"
@@ -29,7 +29,7 @@
             :items="roleOptions"
         />
         <v-text-field 
-            label="Email"
+            :label="$t('words.lb_email')"
             prepend-icon="mail_outline"
             v-model="form.email"
             :error-messages="form.errors.getAll('email')"
@@ -39,20 +39,20 @@
             <v-spacer />
             <v-checkbox 
                 hide-details
-                label="Change password"
+                :label="$t('passwords.change_password')"
                 v-model="form.change_password"
             />
         </div>
         <template v-if="(mode === 'edit' && form.change_password) || (mode === 'new')">
             <v-text-field 
-                label="Password"
+                :label="$t('passwords.password')"
                 type="password"
                 prepend-icon="lock_open"
                 v-model="form.password"
                 :error-messages="form.errors.getAll('password')"
             />
             <v-text-field 
-                label="Password confirmation"
+                :label="$t('passwords.password_confirmation')"
                 type="password"
                 prepend-icon=" "
                 v-model="form.password_confirmation"
@@ -116,7 +116,7 @@ export default {
                 const { data } = response
                 this.roleOptions = data.roles
             }).catch(err => {
-                this.$coresnackbars.error('Error when initial data')
+                this.$coresnackbars.error(this.$t('messages.error_init_date'))
             })
         },
         fetchRow() {
@@ -126,6 +126,8 @@ export default {
                 this.form.email = data.email
                 this.form.active = data.active
                 this.form.roles = data.roles
+            }).catch(err => {
+                this.$coresnackbars.error(this.$t('messages.error_init_date'))
             })
         },
         async saveAction(payload) {

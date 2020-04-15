@@ -12,11 +12,11 @@
 <script>
     if (typeof(ufhy) === "undefined") { var ufhy = {}; }
     ufhy.API_URL = "{{ url('api') }}";
+    ufhy.locale = "@php echo Lang::getLocale(); @endphp";
+    ufhy.langs = @json($langs);
     @auth
         ufhy.userInfo = @json($userInfo);
         ufhy.permissions = @json($permissions);
-    @else
-        ufhy.userInfo = null;
     @endauth
 </script>
 @endsection

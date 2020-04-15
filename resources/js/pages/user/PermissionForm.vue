@@ -8,15 +8,9 @@
         @save-close="saveAction('saveClose')"
         @save="saveAction">
         <v-text-field
-            label="Name"
+            :label="$t('words.lb_name')"
             v-model="form.name"
             :error-messages="form.errors.getAll('name')"
-        />
-        <v-text-field 
-            class="mb-5"
-            label="Guard name"
-            v-model="form.guard_name"
-            :error-messages="form.errors.getAll('guard_name')"
         />
     </core-form-dialog>
 </template>
@@ -41,8 +35,8 @@ export default {
         },
         title() {
             return this.mode === 'new' 
-                ? 'Create role'
-                : 'Edit role'
+                ? this.$t('user.permissions.heading_create')
+                : this.$t('user.permissions.heading_edit')
         }
     },
     async created() {
@@ -68,6 +62,8 @@ export default {
                 const { data } = response
                 this.form.name = data.name
                 this.form.guard_name = data.guard_name
+            }).catch(err => {
+                this.$coresnackbars.error(this.$t('messages.error_init_date'))
             })
         },
         async saveAction(payload) {

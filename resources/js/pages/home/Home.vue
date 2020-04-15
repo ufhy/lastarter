@@ -14,6 +14,9 @@
             <v-btn @click="confirmAction">
                 Confirm Default
             </v-btn>
+            <v-btn @click="getI18n">
+                getI18n
+            </v-btn>
         </div>
     </v-container>
 </template>
@@ -31,6 +34,9 @@ export default {
             this.$root.confirm("You won't be able to revert this!").then(response => {
                 
             })
+        },
+        getI18n() {
+            this.$http.get('/api/addons/i18n', {params: {module: 'user'}})
         }
     }
 }

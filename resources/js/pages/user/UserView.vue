@@ -110,6 +110,8 @@ export default {
                 this.email = data.email
                 this.active = data.active
                 this.lastLogin = data.last_login
+            }).catch(err => {
+                this.$coresnackbars.error(this.$t('messages.error_init_date'))
             })
         },
     }

@@ -72,16 +72,13 @@ class ApiRoleController extends Controller
                 ]);
                 $role->syncPermissions($request->input('permissions'));
 
-                return response()->json([
-                    'message' => 'Success created',
-                    'row' => $role
-                ]);
+                return response()->jsonSavingResult(true, $role->name, $role);
             }
             catch(\Exception $e)
             {
                 DB::rollBack();
                 \Illuminate\Support\Facades\Log::error($e);
-                return response()->json(['message'=>'Unable to create'], 400);
+                return response()->jsonSavingResult(false);
             }
         };
 
@@ -98,6 +95,9 @@ class ApiRoleController extends Controller
     {
         $role = RoleModel::with('permissions:id,name')
             ->find($id);
+        if (!$role) {
+            return response()->jsonNotFound();
+        }
         
         return response()->json($role);
     }
@@ -114,9 +114,7 @@ class ApiRoleController extends Controller
 
         $role = RoleModel::find($id);
         if (!$role) {
-            return response()->json([
-                'message' => 'Role not found'
-            ], 404);
+            return response()->jsonNotFound();
         }
 
         $role->name = $request->input('name');
@@ -125,10 +123,7 @@ class ApiRoleController extends Controller
 
         $role->save();
 
-        return response()->json([
-            'message' => 'Changes saved',
-            'row' => $role
-        ]);
+        return response()->jsonSavingResult(true, $role->name, $role);
     }
 
     /**
@@ -141,9 +136,7 @@ class ApiRoleController extends Controller
         $ids = explode(',', $id);
         RoleModel::destroy($ids);
 
-        return response()->json([
-            'message' => 'Success deleted',
-        ]);
+        return response()->jsonDeletingResult();
     }
 
     /**

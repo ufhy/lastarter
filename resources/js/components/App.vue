@@ -44,6 +44,7 @@ export default {
 
             this.layout = layouts[layout]
         },
+
         /**
          * @param {String} message
          */
@@ -62,6 +63,7 @@ export default {
                 cancelText: 'Cancel'
             })
         },
+
         /**
          * @param {String} message
          * @param {Object} options
@@ -82,6 +84,19 @@ export default {
                 cancelText: options.cancelText ? options.cancelText : 'Cancel',
             })
         },
+
+        /**
+         * @param {Object} errorData
+         */
+        httpError(errorData) {
+            this.$coresnackbars.error(
+                errorData.data.message
+                    ? errorData.data.message
+                    : errorData.data.error 
+                        ? errorData.data.error 
+                        : errorData.status + ' - ' + errorData.searchText
+            )
+        }
     }
 }
 </script>

@@ -116,7 +116,7 @@ export default {
                 const { data } = response
                 this.roleOptions = data.roles
             }).catch(err => {
-                this.$coresnackbars.error(this.$t('messages.error_init_date'))
+                this.$root.httpError(error)
             })
         },
         fetchRow() {
@@ -127,7 +127,7 @@ export default {
                 this.form.active = data.active
                 this.form.roles = data.roles
             }).catch(err => {
-                this.$coresnackbars.error(this.$t('messages.error_init_date'))
+                this.$root.httpError(error)
             })
         },
         async saveAction(payload) {
@@ -147,10 +147,7 @@ export default {
                     ? this.closeAction(true)
                     : this.form.reset()
             } catch (error) {
-                const { data } = error
-                if (data.message) {
-                    this.$coresnackbars.error(data.message)
-                }
+                this.$root.httpError(error)
             }
         }
     }

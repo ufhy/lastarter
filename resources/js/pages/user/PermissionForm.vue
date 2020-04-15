@@ -63,7 +63,7 @@ export default {
                 this.form.name = data.name
                 this.form.guard_name = data.guard_name
             }).catch(err => {
-                this.$coresnackbars.error(this.$t('messages.error_init_date'))
+                this.$root.httpError(err)
             })
         },
         async saveAction(payload) {
@@ -83,10 +83,7 @@ export default {
                     ? this.closeAction(true)
                     : this.form.reset()
             } catch (error) {
-                const { data } = error
-                if (data.message) {
-                    this.$coresnackbars.error(data.message)
-                }
+                this.$root.httpError(error)
             }
         }
     }

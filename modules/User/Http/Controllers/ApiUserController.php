@@ -80,16 +80,13 @@ class ApiUserController extends Controller
                 ]);
                 $user->assignRole($request->input('roles'));
 
-                return response()->json([
-                    'message' => 'Success register',
-                    'row' => $user
-                ]);
+                return response()->jsonSavingResult(true, $user->username, $user);
             }
             catch(\Exception $e)
             {
                 DB::rollBack();
                 \Illuminate\Support\Facades\Log::error($e);
-                return response()->json(['message'=>'Unable to create'], 400);
+                return response()->jsonSavingResult(false);
             }
         };
 
@@ -105,6 +102,9 @@ class ApiUserController extends Controller
     public function show($id)
     {
         $user = UserModel::with('roles:id,name')->find($id);
+        if (!$user) {
+            return response()->jsonNotFound();
+        }
 
         return response()->json($user);
     }
@@ -119,9 +119,7 @@ class ApiUserController extends Controller
     {
         $user = UserModel::find($id);
         if (!$user) {
-            return response()->json([
-                'message' => 'User not found'
-            ], 404);
+            return response()->jsonNotFound();
         }
 
         $request->validate([
@@ -145,10 +143,7 @@ class ApiUserController extends Controller
         $user->syncRoles($request->input('roles'));
         $user->save();
 
-        return response()->json([
-            'message' => 'Success changes',
-            'row' => $user
-        ]);
+        return response()->jsonSavingResult(true, $user->username, $user);
     }
 
     /**
@@ -161,9 +156,7 @@ class ApiUserController extends Controller
         $ids = explode(',', $id);
         UserModel::destroy($ids);
 
-        return response()->json([
-            'message' => 'Success deleted',
-        ]);
+        return response()->jsonDeletingResult();
     }
 
     /**

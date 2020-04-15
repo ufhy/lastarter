@@ -64,10 +64,7 @@ class ApiPermissionController extends Controller
             'guard_name' => 'web',
         ]);
 
-        return response()->json([
-            'message' => 'Success created',
-            'row' => $permission
-        ]);
+        return response()->jsonSavingResult(true, $permission->name, $permission);
     }
 
     /**
@@ -78,6 +75,10 @@ class ApiPermissionController extends Controller
     public function show($id)
     {
         $permission = PermissionModel::find($id);
+        if (!$permission) {
+            return response()->jsonNotFound();
+        }
+        
         return response()
             ->json($permission);
     }
@@ -94,19 +95,14 @@ class ApiPermissionController extends Controller
 
         $permission = PermissionModel::find($id);
         if (!$permission) {
-            return response()->json([
-                'message' => 'Permission not found'
-            ], 404);
+            return response()->jsonNotFound();
         }
 
         $permission->name = $request->input('name');
         $permission->guard_name = 'web';
         $permission->save();
 
-        return response()->json([
-            'message' => 'Changes saved',
-            'row' => $permission
-        ]);
+        return response()->jsonSavingResult(true, $permission->name, $permission);
     }
 
     /**
@@ -119,8 +115,6 @@ class ApiPermissionController extends Controller
         $ids = explode(',', $id);
         PermissionModel::destroy($ids);
 
-        return response()->json([
-            'message' => 'Success deleted',
-        ]);
+        return response()->jsonDeletingResult();
     }
 }

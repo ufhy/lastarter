@@ -150,21 +150,16 @@ export default {
         }
     },
     methods: {
-        refreshAction() {
+        async refreshAction() {
             this.loading = true
-            dtFetchRows('/api/user/users', this.dtHeaders, this.dtOptions, this.searchText)
+            await dtFetchRows('/api/user/users', this.dtHeaders, this.dtOptions, this.searchText)
                 .then(data => {
                     this.dtItems = data.items
                     this.dtTotalItem = data.total
-                }).catch(error => {
-                    this.$coresnackbars.error(
-                        error.data.message
-                            ? error.data.message
-                            : error.status + ' - ' + error.searchText
-                    )
-                }).then(() => {
-                    this.loading = false
-                })
+                }).catch(() => {})
+            this.$nextTick(() => {
+                this.loading = false
+            })
         },
         removeAction(item) {
             if (this.loading) {

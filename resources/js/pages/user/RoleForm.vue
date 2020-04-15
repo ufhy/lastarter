@@ -102,7 +102,7 @@ export default {
                 const { data } = response
                 this.permissionOptions = data.permissions
             }).catch(err => {
-                this.$coresnackbars.error(this.$t('messages.error_init_date'))
+                this.$root.httpError(error)
             })
         },
         fetchRow() {
@@ -118,7 +118,7 @@ export default {
                     });
                 }
             }).catch(err => {
-                this.$coresnackbars.error(this.$t('messages.error_init_date'))
+                this.$root.httpError(err)
             })
         },
         async saveAction(payload) {
@@ -138,10 +138,7 @@ export default {
                     ? this.closeAction(true)
                     : this.form.reset()
             } catch (error) {
-                const { data } = error
-                if (data.message) {
-                    this.$coresnackbars.error(data.message)
-                }
+                this.$root.httpError(error)
             }
         },
         permissionSelectAll() {

@@ -62,6 +62,14 @@ export const dtFetchRows = function(url, headers, options, searchText) {
 				total: response.data.recordsTotal ? response.data.recordsTotal : 0,
 			});
 		}).catch(error => {
+            VUE.$coresnackbars.error(
+                error.data.message
+                    ? error.data.message
+                    : error.data.error 
+                        ? error.data.error 
+                        : error.status + ' - ' + error.searchText
+            )
+
 			reject(error)
 		})
     });

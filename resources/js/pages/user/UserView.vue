@@ -6,7 +6,7 @@
         max-width="400">
         <v-card :loading="loading" :disabled="loading">
             <v-card-title>
-                <span>View user</span>
+                <span>{{ $t('user.users.heading_detail') }}</span>
                 <v-spacer />
                 <v-btn icon exact
                     :to="{
@@ -31,7 +31,7 @@
                                 {{ username }}
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Username
+                                {{ $t('words.lb_username') }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
@@ -44,7 +44,7 @@
                                 {{ email }}
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Email
+                                {{ $t('words.lb_email') }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
@@ -56,7 +56,7 @@
                                 {{ active ? 'Active' : 'Disabled' }}
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Status
+                                {{ $t('words.lb_status') }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
@@ -67,7 +67,7 @@
                                 {{ lastLogin ? $moment(lastLogin).format('MMM DD, YYYY') : 'Not yet' }}
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Last login
+                                {{ $t('words.lb_last_login') }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>

@@ -18,6 +18,7 @@ return [
     'lb_email' => 'Email',
     'lb_username' => 'Username',
     'lb_active' => 'Active',
+    'lb_status' => 'Status',
     'lb_last_login' => 'Last login',
     'lb_updated_at' => 'Updated At',
     'lb_created_at' => 'Created At',

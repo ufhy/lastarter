@@ -8,7 +8,6 @@ import Vuetify, {
     VList, VListItem, VListItemAction, VListItemTitle, VListItemSubtitle, VListItemContent, VListItemIcon,
     VDataTable,
 } from 'vuetify/lib'
-import '../styles/vuetify.scss'
 
 Vue.use(Vuetify, {
     components: {

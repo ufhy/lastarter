@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
 <link href="{{ mix('dist/vuetify.css') }}" rel="stylesheet">
-<link href="{{ mix('dist/app.css') }}" rel="stylesheet">
+<link href="{{ mix('dist/main.css') }}" rel="stylesheet">
 
 <script>
     if (typeof(ufhy) === "undefined") { var ufhy = {}; }
@@ -22,6 +22,7 @@
 @endsection
 
 @section('script-bottom')
+    <script src="{{ mix('dist/moment.js') }}" defer></script>
     <script src="{{ mix('dist/vue.js') }}" defer></script>
     <script src="{{ mix('dist/vuetify.js') }}" defer></script>
     <script src="{{ mix('dist/app.js') }}" defer></script>

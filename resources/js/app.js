@@ -14,6 +14,7 @@ Vue.use(VuejsDialog)
 Vue.dialog.registerComponent('vuejs-confirm-dialog', VuejsConfirmDialog)
 
 Vue.prototype.$http = api()
+Vue.prototype.$moment = moment
 
 import(/* webpackChunkName: "plugins" */ './plugins').then(() => {
 

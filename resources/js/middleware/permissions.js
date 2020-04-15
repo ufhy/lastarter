@@ -1,4 +1,4 @@
-import store from '~/store'
+import store from '../store'
 import ability from '../plugins/ability/services';
 
 export default (to, from, next) => {

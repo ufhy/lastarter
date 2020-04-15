@@ -10,7 +10,7 @@
 import { mapState } from 'vuex'
 
 // Load layout components dynamically.
-const requireContext = require.context('~/layouts', false, /.*\.vue$/)
+const requireContext = require.context('../layouts', false, /.*\.vue$/)
 const layouts = requireContext.keys()
     .map(file =>
         [file.replace(/(^.\/)|(\.vue$)/g, ''), requireContext(file)]
